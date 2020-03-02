@@ -1,0 +1,27 @@
+package aplicacao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import dominio.Pessoa;
+
+public class Programa {
+
+	public static void main(String[] args) {
+
+		Pessoa p1 = new Pessoa(null, "Rodolfo da Costa Lacerda", "rodolfo.lacerda@gmail.com");
+		Pessoa p2 = new Pessoa(null, "Joaquim Levy", "levy91@gmail.com");
+		Pessoa p3 = new Pessoa(null, "Mauro Andrade", "Mgbet@hotmail.com");
+
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("treinando-jpa");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(p1);
+		em.persist(p2);
+		em.persist(p3);
+		em.getTransaction().commit();
+		System.out.println("Concluido!");
+	}
+
+}
